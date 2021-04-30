@@ -1,19 +1,26 @@
-#include <iostream> 
-#include <cmath>
+/******************************************************************************
 
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <array>
 using namespace std;
 
-void f1();
 
 
-int main()
+int main ()
 {
-    cout << "Before call to f1.\n";
-    f1();
-    cout << "After\n";
-}
+    int array[3][3] = {1,2,3,4,5,6,7,8,9};
 
-void f1()
-{
-    cout << "during\n";
+    for (int i=0; i< 3; i++)
+        
+        for(int j = 0; j<3; j++)
+        
+            cout << array[i][j];
 }
