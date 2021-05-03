@@ -1,5 +1,7 @@
 //
 #include <stdexcept>
+#include <iostream>
+#include <iomanip>
 #include "tictactoe.h"
 
 TicTacToe::TicTacToe()
@@ -35,35 +37,35 @@ void TicTacToe::makeMove(Players player, size_t row, size_t col)
 
 void TicTacToe::updateStatus()
 {
-    bool rowWin;
-    bool colWin;
+    bool isRowWin;
+    bool isColWin;
     for(size_t row = 0; row < DIMENSION; ++row)
         {
-            rowWin = true;
-            colWin = true;
+            isRowWin = true;
+            isColWin = true;
 
             for (size_t col = 0; col < DIMENSION; ++col)
             {
                 if(grid[row][col] != grid[row][col+1])
                     {
-                        rowWin = false;
+                        isRowWin = false;
                         continue;
                     }
             }
 
-            if(rowWin)
+            if(isRowWin)
                 currentStatus = (grid[row][0] == X) ? WIN : LOST;
 
             for (size_t col = 0; col < DIMENSION; ++col)
                     {
                         if(grid[row][col] != grid[row][col+1])
                             {
-                                colWin = false;
+                                isColWin = false;
                                 continue;
                             }
                     }
 
-            if(colWin)
+            if(isColWin)
                 currentStatus = (grid[row][0] == X) ? WIN : LOST;
 
             
@@ -72,3 +74,21 @@ void TicTacToe::updateStatus()
 }
 
 Status TicTacToe::getStatus() { return currentStatus; };
+
+void TicTacToe::printGameState()
+{
+    for (size_t row = 0; row < DIMENSION; ++row)
+    {
+        std::cout << grid[row][0];
+        for (size_t col = 1; col < DIMENSION; ++col)
+        
+          std::cout << " | " << grid[row][col];
+        
+        if(row < DIMENSION - 1)
+            std::cout << "\n----------\n";
+        else 
+            std::cout << std::endl;
+    }
+    
+
+}

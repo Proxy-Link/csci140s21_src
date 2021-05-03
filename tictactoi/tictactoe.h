@@ -22,5 +22,6 @@ public:
     void reset();
     void makeMove(Players, size_t, size_t);
     Status getStatus();
+    void printGameState();
 
 };
