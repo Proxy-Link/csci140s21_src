@@ -10,20 +10,10 @@ using std::endl;
 #define WINDOWS true
 void clearScreen();
 void clearInstream();
-
-enum Status : size_t
-{
-};
-enum Objects : size_t
-{
-    S,
-    B,
-    G
-};
+void generateGold();
 
 class dungeon
 {
-private:
 public:
     char dungeon[4][4];
     int xpos{0}, ypos{0};
@@ -43,29 +33,36 @@ public:
                 dungeon[i][j] = ' ';
             }
         }
-        dungeon[xpos][ypos] = 'U';
+        dungeon[0][0] = 'U';
+        generateGold();
+        for (int k = 0; k < 3; ++k)
+        {
+            generatePit();
+        }
     }
 
     void generateGold()
     {
-        int goldX, goldY;
-        goldX = rand() % 4;
-        goldY = rand() % 4;
-        if (dungeon[goldX][goldY] == ' ')
-        {
-            dungeon[goldX][goldY] = 'G';
+        while(xpos+ypos == 0){
+            srand(time(0));
+            xpos = rand() % 4;
+            ypos = rand() % 4;
+            dungeon[xpos][ypos] = 'X';
         }
     }
 
     void generatePit()
     {
-        int pitX, pitY;
-        xpos = rand() % 4;
-        ypos = rand() % 4;
-        if (dungeon[xpos - 1][pitY - 1] == ' ' || dungeon[pitX + 1][pitY + 1] == ' ' || dungeon[pitX + 1][pitY - 1] == ' ' || dungeon[pitX - 1][pitY + 1] == ' ')
-        {
-            dungeon[pitX][pitY] == 'B';
+        
+        bool ok = false;
+        while(ok == false){
+        xpos = rand() %4;
+        ypos = rand() %4;
+        if(dungeon[xpos][ypos]==' '){
+        dungeon[xpos][ypos] = 'T';
+        ok=true;
         }
+ }
     }
 
     void generateBoo()
@@ -78,8 +75,6 @@ public:
     void userControls()
     {
         char userInput;
-        const char user = 'U';
-        dungeon[xpos][ypos] = user;
         cin >> userInput;
         clearInstream();
 
@@ -87,19 +82,27 @@ public:
         {
         case 'u':
         case 'U':
+            dungeon[xpos][ypos] = ' ';
             upDir();
+            dungeon[xpos][ypos] = 'U';
             break;
         case 'd':
         case 'D':
+            dungeon[xpos][ypos] = ' ';
             downDir();
+            dungeon[xpos][ypos] = 'U';
             break;
         case 'l':
         case 'L':
+            dungeon[xpos][ypos] = ' ';
             leftDir();
+            dungeon[xpos][ypos] = 'U';
             break;
         case 'r':
         case 'R':
+            dungeon[xpos][ypos] = ' ';
             rightDir();
+            dungeon[xpos][ypos] = 'U';
             break;
         case 'p':
         case 'P':
@@ -110,7 +113,9 @@ public:
             cin >> userInput;
             break;
         }
-        dungeon[xpos][ypos] = 'U';
+        
+       
+        
     }
 
     void upDir()
@@ -189,6 +194,11 @@ public:
         }
     }
 
+    void gameRules()
+    {
+        
+    }
+
     void clearScreen()
     {
         if (WINDOWS)
@@ -204,22 +214,5 @@ public:
         std::cin.ignore(INT_MAX, '\n');
     }
 
-    void startGame()
-    {
-        initDungeon();
 
-        for (int i = 0; i <= 2; ++i)
-        {
-            generatePit();
-        }
-
-        introMessage();
-        while (true)
-        {
-            printDugeon();
-            userControls();
-            //clearInstream();
-            //clearScreen();
-        }
-    }
 };

@@ -24,7 +24,7 @@ int main()
             C[i][j][4] = '\0';
     pickRandom(A);
     int valid = 0;
-    int x = 0, y = 0;
+    int x = 0, y = 0; 
     while (true)
     {
         clearScreen();
@@ -39,7 +39,7 @@ int main()
             for (int j = 0; j < 4; j++)
                 printf("---------");
             printf("\n");
-            printf("|");
+            printf("|"); 
             for (int j = 0; j < 4; j++)
                 printf("%8s|", C[i][j]);
             printf("\n");
@@ -202,6 +202,7 @@ int checkNeighbour(char A[][4], int x, int y)
 
     return 1;
 }
+
 void relax(int x, int y, char A[][4], char C[][4][5])
 {
     if (A[x][y] == 'G')

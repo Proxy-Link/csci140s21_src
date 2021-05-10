@@ -15,11 +15,17 @@ using std::array;
 int main()
 {
     dungeon boo;
+    boo.initDungeon();
+    
+
    while(true)
    {
-
+       
+       boo.printDugeon();
+       boo.userControls();
+       //boo.clearScreen();
     
-    boo.startGame();
+    
 
    }
     
