@@ -7,7 +7,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-#define WINDOWS true
+#define WINDOWS false
 void clearScreen();
 void clearInstream();
 void generateGold();

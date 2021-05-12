@@ -20,7 +20,7 @@ class Barrel
 private:
     // data members go here
     static T array[N];
-    size_t numItems{0};
+    size_t numItems = 0;
 
 public:
     /** Gets the current number of entries in this barrel.
@@ -117,7 +117,7 @@ public:
         @return The number of times item appears in the barrel. */
     size_t getFrequency(T item)
     {
-        size_t frequency{0};
+        size_t frequency = 0;
 
         for (size_t i = 0; i < numItems; ++i)
         {
