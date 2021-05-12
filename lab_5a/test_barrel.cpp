@@ -1,13 +1,15 @@
 #include <iostream>
 #include "barrel.h"
+#include <cassert>
+#include <cstring>
 
 int main()
 
 {
-    Barrel<char, 10> bar;
+    Barrel<int, 10> bar;
 
-    int controls;
-    char item;
+    unsigned short int controls;
+    int item;
     std::cin >> controls;
 
     while (controls != 'x')
