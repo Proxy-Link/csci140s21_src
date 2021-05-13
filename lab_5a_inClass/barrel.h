@@ -1,7 +1,7 @@
-// who: Elias Magdaleno | emagdaleno8@student.mtsac.edu
-// what: test the store of data in a container class
-// why: lab 5a
-// when: 5/11/21
+// who: <your name and Mt SAC username goes here>
+// what: <the function of this program>
+// why: <the name of the lab>
+// when: <the due date of this lab.>
 
 // include guard
 #ifndef BARREL_H
@@ -19,35 +19,26 @@ class Barrel
 {
 private:
     // data members go here
-    T array[N];
-    size_t numItems = 0;
+    T items[N];
+    size_t itemQty{0};
 
-public:
+public: 
     /** Gets the current number of entries in this barrel.
         @return The integer number of entries currently in the barrel. */
-    size_t count()
-    {
-        return numItems;
-    }
+    size_t count() { return itemQty; }
 
     /** Sees whether this barrel is empty.
         @return True if the barrel is empty, or false if not. */
-    bool isEmpty()
-    {
-        return count() == 0;
-    }
+    bool isEmpty() { return itemQty == 0; }
 
     /** Adds a new item to this barrel.
         @param item The object to be added as a new item.
         @throws runtime_error if the barrel is full */
     void add(T item)
     {
-        if (!(count() < N))
-        {
-            throw std::runtime_error("barrel is full");
-        }
-        array[numItems] = item;
-        ++numItems;
+        if(itemQty == N)
+            throw std::runtime_error("Barrel is full");
+        items[itemQty++] = item;
     }
 
     /** Removes one unspecified item from this barrel, if possible.
@@ -55,13 +46,9 @@ public:
         @throws runtime_error if the barrel was empty. */
     T remove()
     {
-        if (isEmpty())
-        {
-            throw std::runtime_error("barrel is already empty");
-        }
-        T item = array[numItems - 1];
-        --numItems;
-        return item;
+        if(isEmpty())
+            throw std::runtime_error("Barrel is empty");
+        return items[--itemQty];
     }
 
     /** Removes one occurrence of a given item from this barrel.
@@ -69,65 +56,32 @@ public:
         @return True if the removal was successful, or false otherwise. */
     bool remove(T item)
     {
-
-        size_t index = -1;
-        for (size_t i = 0; i < numItems; ++i)
-        {
-            if (array[i] == item)
+        for (size_t i = 0; i < itemQty; ++i)
+        
+            if (items[i] == item)
             {
-                index = i;
-                break;
+                if(i != -- itemQty)
+                    items[i] = items[itemQty];
+                return true;
             }
-        }
 
-        if (index == -1)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-
-        ++index;
-
-        while (index < numItems)
-        {
-            array[index - 1] = array[index];
-            ++index;
-        }
-
-        --index;
-        array[index] = static_cast<T>(NULL);
-        --numItems;
+        return false;
+        
     }
 
     /** Removes all entries from this barrel. sets the used elements to NULL */
-    void clear()
-    {
-        for (size_t i = 0; i < numItems; ++i)
-        {
-            array[i] = static_cast<T>(NULL);
-        }
-        numItems = 0;
-    }
+    void clear(){ itemQty = 0; }
 
     /** Counts the number of times a given item appears in this barrel.
         @param item The item to be counted.
         @return The number of times item appears in the barrel. */
     size_t getFrequency(T item)
     {
-        size_t frequency = 0;
-
-        for (size_t i = 0; i < numItems; ++i)
-        {
-            if (array[i] == item)
-            {
-                ++frequency;
-            }
-        }
-
-        return frequency;
+        size_t count = 0;
+        for (size_t i = 0; i < itemQty; ++i)
+            if(items[i] == item)
+                ++count;
+        return count;
     }
 
     /** Tests whether this barrel contains a given item.
@@ -135,14 +89,11 @@ public:
         @return True if the barrel contains item, or false otherwise */
     bool contains(T item)
     {
-        for (size_t i = 0; i < numItems; ++i)
-        {
-            if (array[i] == item)
-            {
+        for (size_t i = 0; i < itemQty; ++i)
+            if(items[i] == item)
                 return true;
-            }
-        }
         return false;
+        
     }
 };
 
