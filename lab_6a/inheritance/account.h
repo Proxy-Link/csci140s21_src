@@ -33,3 +33,18 @@ private:
 }; 
 
 #endif
+
+class SavingsAccount
+{
+public:
+    SavingsAccount();
+
+};
+
+class CheckingAccount
+{
+public: 
+    CheckingAccount();
+
+};
+
