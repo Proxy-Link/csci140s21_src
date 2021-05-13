@@ -5,8 +5,67 @@
 
 int main()
 
+    // testing count and isEmpty
+    assert(barrel.count() == 0);
+    assert(barrel.isEmpty() == true);
+
+    // adding items
+    barrel.add(1);
+    barrel.add(2);
+    barrel.add(3);
+    barrel.add(1);
+    barrel.add(2);
+
+    // adding another item must throw
+    try
 {
-    Barrel<int, 10> bar;
+        barrel.add(3);
+        assert(0 && "this must not run");
+    }
+    catch (const std::runtime_error &exception)
+    {
+        assert(std::strcmp(exception.what(),
+                           "cannot add to a full barrel") == 0);
+    }
+
+    // testing count and isEmpty
+    assert(barrel.count() == 5);
+    assert(barrel.isEmpty() == false);
+
+    // testing contains
+    assert(barrel.contains(1) == true);
+    assert(barrel.contains(2) == true);
+    assert(barrel.contains(3) == true);
+    assert(barrel.contains(4) == false);
+    assert(barrel.contains(5) == false);
+
+    // testing getFrequency
+    assert(barrel.getFrequency(1) == 2);
+    assert(barrel.getFrequency(2) == 2);
+    assert(barrel.getFrequency(3) == 1);
+    assert(barrel.getFrequency(4) == 0);
+    assert(barrel.getFrequency(5) == 0);
+
+    // testing remove
+    assert(barrel.remove() == 2);
+
+    // testing count and isEmpty
+    assert(barrel.count() == 4);
+    assert(barrel.isEmpty() == false);
+
+    // testing remove
+    assert(barrel.remove(4) == false);
+
+    // testing count and isEmpty
+    assert(barrel.count() == 4);
+    assert(barrel.isEmpty() == false);
+
+    // testing remove
+    assert(barrel.remove(2) == true);
+
+    // testing count and isEmpty
+    assert(barrel.count() == 3);
+    assert(barrel.isEmpty() == false);
 
     unsigned short int controls;
     int item;
