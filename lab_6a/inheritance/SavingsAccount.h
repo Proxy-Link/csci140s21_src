@@ -9,6 +9,10 @@ public:
     SavingsAccount(double balance, double interestRate)
         : Account(balance){ this->interestRate;}
 
+    double calculateInterest();
+    void credit(double amount);
+    bool debit(double amount);
+
     /**
        @return the the amount of interest earned by the account */
     double SavingsAccount::calculateInterest()
