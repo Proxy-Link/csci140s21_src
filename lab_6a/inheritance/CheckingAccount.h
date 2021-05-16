@@ -6,18 +6,10 @@
 class CheckingAccount : public Account{
 
 public:
-    CheckingAccount(double balance, double fee)
-        : Account(balance) { this->fee; }
-    void CheckingAccount::credit(double amount)
-    {
-        getBalance() - fee;
-    }
-
-    bool CheckingAccount::debit(double amount)
-    {
-        if(debit(true))
-            amount += fee;
-    }
+    CheckingAccount( double, double);
+    void credit(double);
+    bool debit(double);
+    
 private:
     double fee;
 
