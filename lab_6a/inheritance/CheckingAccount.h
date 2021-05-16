@@ -1,4 +1,4 @@
-#ifndef CHECKINGACCOUNT
+#ifndef CHECKINGACCOUNT_H
 #define CHECKINGACCOUNT_H
 
 #include "account.h"
@@ -12,6 +12,7 @@ public:
     
 private:
     double fee;
+    void charge();
 
 };
 

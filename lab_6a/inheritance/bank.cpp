@@ -10,7 +10,10 @@ int main(int argc, char const *argv[])
     SavingsAccount savings(25.0, .03);
     CheckingAccount checking(80.0, 1.0);
 
-    std::cout << account.getBalance();
+    std::cout << account.getBalance() << std::endl;
+    std::cout << savings.getBalance() << std::endl;
+    std::cout << checking.getBalance() << std::endl;
+
 
    
     

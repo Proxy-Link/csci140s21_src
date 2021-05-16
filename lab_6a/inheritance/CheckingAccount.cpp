@@ -2,7 +2,10 @@
 #include "CheckingAccount.h"
 
 CheckingAccount::CheckingAccount(double balance, double fee)
-    : Account(balance) { this->fee; }
+    : Account(balance) 
+    {
+    
+     }
 void CheckingAccount::credit(double amount)
 {
     getBalance() - fee;
@@ -10,6 +13,12 @@ void CheckingAccount::credit(double amount)
 
 bool CheckingAccount::debit(double amount)
 {
-    if (debit(true))
-        amount += fee;
+    bool success = Account::debit(amount);    
+    if(success)
+        charge();
+        return true;
+
+    return false;
+
+    
 }

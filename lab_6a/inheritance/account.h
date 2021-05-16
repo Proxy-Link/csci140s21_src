@@ -37,7 +37,7 @@ public:
             balance -= amount;
             return true;
         return false;
-            throw std::runtime_error("Amount attempted to be withdraw is less than amount available");
+            throw std::out_of_range("Amount attempted to be withdraw is less than amount available");
    }
 
    /** Return the account balance
