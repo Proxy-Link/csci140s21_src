@@ -4,20 +4,26 @@
 #include "SavingsAccount.h"
 #include "CheckingAccount.h"
 
-int main(int argc, char const *argv[])
+int main()
 {
     Account account(500.0);
-    SavingsAccount savings(25.0, .03);
-    CheckingAccount checking(80.0, 1.0);
+    SavingsAccount savings(44.0, .12);
+    CheckingAccount checking(1000.0, 4.0);
 
-    std::cout << account.getBalance() << std::endl;
-    std::cout << savings.getBalance() << std::endl;
-    std::cout << checking.getBalance() << std::endl;
+    std::cout << "Initial Balance Available in Account: $ " << account.getBalance() << std::endl;
+    std::cout << "Initial Balance Available in Savings: $ " << savings.getBalance() << std::endl;
+    std::cout << "Initial Balance Available in Checking: $ " << checking.getBalance() << std::endl;
 
+    std::cout << " $33 removed from Account balance:" << std::endl;
+    account.debit(33.0);
+    std::cout << "$20 removed from Savings balance:" << std::endl;
+    savings.debit(20.0);
+    std::cout << "$50 removed from Checking balance:" << std::endl;
+    checking.debit(50.0);
+
+    std::cout << "Balance Available in Account: $" << account.getBalance() << std::endl;
+    std::cout << "Balance Available in Savings: $" << savings.getBalance() << std::endl;
+    std::cout << "Balance Available in Checking: $" << checking.getBalance() << std::endl;
 
    
-    
-
-
-
 }

@@ -7,8 +7,14 @@ class SavingsAccount : public Account
 {
 
 public:
-    SavingsAccount(double, double);
+    /** constructor initializes balance & interest
+      @parameter: recieves initial balance and value 
+      for initial value for interest rate 
+      @throw: invalid_arguement exception if rate is not greater than 0*/
+    SavingsAccount(double d, double interestRate);
 
+    /** calculate interest rate
+        @return: value of balance times interest */
     double calculateInterest();
 
 private:
