@@ -38,3 +38,29 @@ void status()
 {
 
 }
+
+
+/*
+const char moves[] {'N', 'S', 'W', 'E', 'C', 'P'};
+
+char getInput()
+{
+    return 'J';
+}
+
+bool isValid(char symbol)
+{
+    for (int i =0; i < sizeof(moves); ++i)
+        if(symbol = moves[i])
+            return true;
+
+    return false;
+}
+
+int main(int argc, char const *argv[])
+
+{
+    char input = getInput();
+    return 0;
+}
+*/
